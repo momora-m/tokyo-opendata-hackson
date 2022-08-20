@@ -22,10 +22,10 @@ async fn get_json() -> Result<HttpResponse,actix_web::Error>{
 
     let res:ReturnJson = serde_json::from_reader(json).unwrap();
 
-        Ok(
-    HttpResponse::Ok()
-        .content_type("application/json")
-        .json(res))
+    Ok(
+        HttpResponse::Ok()
+            .content_type("application/json")
+            .json(res))
 }
 
 #[actix_rt::main]
