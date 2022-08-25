@@ -4,15 +4,13 @@ use serde::{Deserialize, Serialize};
 use std::{fs::File, io::BufReader};
 
 const SERVER:&str = "0.0.0.0:8080";
-const JSON_NAME:&str = "test.json";
-
+const JSON_NAME:&str = "output.json";
+use std::collections::HashMap;
 #[derive(Serialize, Deserialize)]
 struct ReturnJson{
-    q1:i32,
-    q2:i32,
-    q3:i32,
-    q4:i32,
-    q5:i32,
+    Q5:HashMap<String,f32>,
+    Q7:HashMap<String,f32>,
+    Q14:HashMap<String,f32>,
 }
 
 #[get("/getJson")]
