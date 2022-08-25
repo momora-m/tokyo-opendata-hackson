@@ -1,16 +1,16 @@
 use actix_web::{get,HttpResponse, HttpServer,App};
 use serde::{Deserialize, Serialize};
-
+use std::collections::HashMap;
 use std::{fs::File, io::BufReader};
 
 const SERVER:&str = "0.0.0.0:8080";
 const JSON_NAME:&str = "output.json";
-use std::collections::HashMap;
+
 #[derive(Serialize, Deserialize)]
 struct ReturnJson{
-    Q5:HashMap<String,f32>,
-    Q7:HashMap<String,f32>,
-    Q14:HashMap<String,f32>,
+    q5:HashMap<String,f32>,
+    q7:HashMap<String,f32>,
+    q14:HashMap<String,f32>,
 }
 
 #[get("/getJson")]
@@ -20,10 +20,9 @@ async fn get_json() -> Result<HttpResponse,actix_web::Error>{
 
     let res:ReturnJson = serde_json::from_reader(json).unwrap();
 
-    Ok(
-        HttpResponse::Ok()
-            .content_type("application/json")
-            .json(res))
+    Ok(HttpResponse::Ok()
+        .content_type("application/json")
+        .json(res))
 }
 
 #[actix_rt::main]
