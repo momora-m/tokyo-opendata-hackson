@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::{fs::File, io::BufReader};
 
+use std::process::{Command};
 const SERVER:&str = "0.0.0.0:8080";
 const JSON_NAME:&str = "output.json";
 
@@ -19,10 +20,20 @@ async fn get_json() -> Result<HttpResponse,actix_web::Error>{
     let json = BufReader::new(json);
 
     let res:ReturnJson = serde_json::from_reader(json).unwrap();
+    
 
     Ok(HttpResponse::Ok()
         .content_type("application/json")
         .json(res))
+}
+
+#[get("/python")]
+async fn execute_python()-> Result<HttpResponse,actix_web::Error> {
+    let path:String = "batch/dropbox2json.py".to_string();
+    Command::new("python").args(&["-u".to_string(), path]).spawn().unwrap();
+    
+
+    Ok(HttpResponse::Ok().body("ok"))
 }
 
 #[actix_rt::main]
@@ -30,6 +41,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .service(get_json)
+            .service(execute_python)
     })
     .bind(SERVER)?
     .run()

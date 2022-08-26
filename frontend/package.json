@@ -11,7 +11,9 @@
   "dependencies": {
     "@emotion/babel-plugin": "^11.10.2",
     "@emotion/react": "^11.10.0",
+    "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.10.2",
     "@mui/material": "^5.10.2",
     "cross-env": "^7.0.3",
     "next": "12.2.3",
