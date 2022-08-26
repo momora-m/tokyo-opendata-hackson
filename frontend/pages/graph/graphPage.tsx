@@ -71,6 +71,10 @@ const GraphPage: NextPage<GraphDataType> = ( props: GraphDataType ) => {
             }
         ]
     }
+    const options = {
+        maintainAspectRatio: false,
+        responsive: false
+      };
     return (
       <div>
           <Head>
@@ -78,7 +82,7 @@ const GraphPage: NextPage<GraphDataType> = ( props: GraphDataType ) => {
               <meta name="description" content="検索エンジン用の説明文" />
           </Head>
           <h1>Graph Page</h1>
-          <Pie data={graphData} />;
+          <Pie  data={graphData} />;
       </div>
     )
 }
