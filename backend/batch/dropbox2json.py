@@ -2,8 +2,9 @@ import dropbox
 import json
 import csv
 import shutil
+import os
 
-dropbox_access_token=""
+dropbox_access_token="sl.BOGlS3NPm_KGoe89FGnMhBZsnofy9aLmXwiSsRuEBVMpkku5iVS8xfE_b2NoX1htJjyataEKh4fC9AB4DxpYuCVQA-Ahn92VuZq1H-cOQCn4P4hkRcuf3Hoh6aDzBbNnG6YxU6QT9FE"
 client = dropbox.Dropbox(dropbox_access_token)
 
 #ここがQ5
@@ -73,4 +74,8 @@ with open('output.json', 'w') as f:
     f.close()
 
 #ファイル移動
-shutil.move("output.json", "../output.json")
+shutil.move("output.json", "output.json")
+
+os.remove('Q14.csv')
+os.remove('Q7.csv')
+os.remove('Q5.csv')
