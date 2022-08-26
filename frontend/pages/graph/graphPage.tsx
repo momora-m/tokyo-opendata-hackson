@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from "react-chartjs-2";
 import { Box, Grid, Typography } from '@mui/material';
+import { InsertEmoticon } from '@mui/icons-material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -158,32 +159,147 @@ const GraphPage: NextPage<GraphDataType> = ( props: GraphDataType ) => {
             }
         ]
     }
+    const keys2 = Object.keys(props.q7);
+    const graphData2 ={
+        labels: keys2,
+        datasets: [
+            {
+                label: "調査結果2",
+                data: [
+                    props.q7.a, 
+                    props.q7.b, 
+                    props.q7.c, 
+                    props.q7.d, 
+                    props.q7.e,
+                    props.q7.f, 
+                    props.q7.g, 
+                    props.q7.h,
+                    props.q7.i,
+                    props.q7.j, 
+                    props.q7.k,
+                    props.q7.l,
+                    props.q7.m, 
+                    props.q7.n,
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(20, 222, 225)',
+                    'rgb(25, 215, 42)',
+                    'rgb(54, 30, 235)',
+                    'rgb(55, 25, 86)',
+                    'rgb(20, 122, 125)',
+                    'rgb(135, 115, 192)',
+                    'rgb(225, 115, 144)',
+                    'rgb(24, 221, 234)',
+                    'rgb(63, 172, 96)',
+                    'rgb(222, 83, 115)',
+                    'rgb(85, 32, 211)',                 
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(20, 222, 225)',
+                    'rgb(25, 215, 42)',
+                    'rgb(54, 30, 235)',
+                    'rgb(55, 25, 86)',
+                    'rgb(20, 122, 125)',
+                    'rgb(135, 115, 192)',
+                    'rgb(225, 115, 144)',
+                    'rgb(24, 221, 234)',
+                    'rgb(63, 172, 96)',
+                    'rgb(222, 83, 115)',
+                    'rgb(85, 32, 211)', 
+                  ],
+                borderWidth: 1,
+            }
+        ]
+    }
+
+    const keys3 = Object.keys(props.q14);
+    const graphData3 ={
+        labels: keys3,
+        datasets: [
+            {
+                label: "調査結果2",
+                data: [
+                    props.q14.aa, 
+                    props.q14.bb, 
+                    props.q14.cc, 
+                    props.q14.dd, 
+                    props.q14.ee,
+                    props.q14.ff, 
+                    props.q14.gg, 
+                    props.q14.hh,
+                    props.q14.ii,
+                    props.q14.jj, 
+                    props.q14.kk,
+                    props.q14.ll,
+                    props.q14.mm, 
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(20, 222, 225)',
+                    'rgb(25, 215, 42)',
+                    'rgb(54, 30, 235)',
+                    'rgb(55, 25, 86)',
+                    'rgb(20, 122, 125)',
+                    'rgb(135, 115, 192)',
+                    'rgb(225, 115, 144)',
+                    'rgb(24, 221, 234)',
+                    'rgb(63, 172, 96)',
+                    'rgb(222, 83, 115)',              
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(20, 222, 225)',
+                    'rgb(25, 215, 42)',
+                    'rgb(54, 30, 235)',
+                    'rgb(55, 25, 86)',
+                    'rgb(20, 122, 125)',
+                    'rgb(135, 115, 192)',
+                    'rgb(225, 115, 144)',
+                    'rgb(24, 221, 234)',
+                    'rgb(63, 172, 96)',
+                    'rgb(222, 83, 115)',
+                  ],
+                borderWidth: 1,
+            }
+        ]
+    }
     const options = {
         maintainAspectRatio: false,
         responsive: false
       };
     return (
-      <Grid container alignItems='center' justifyContent='center' direction="column">
-        <Box
-            sx={{
-            width: 600,
-            height: 600,
-            }}
-        >
-            <div>
-            <Typography variant="h3" mt={5} ml={7} mb={3}>
-                質問のアンケート結果 
+      <Grid container alignItems='center' justifyContent='center' spacing={2}>
+        <Grid item xs={12}>
+            <Typography variant="h3" textAlign='center' mt={5} mb={3}>
+            質問のアンケート結果 
             </Typography>
-            <Pie  data={graphData} />;
-            </div>
-            <Typography variant="h5" gutterBottom mb={3}>
-                スマホの悩みについてご相談したい方は
-                <a href='https://www.tokyohelpdesk.metro.tokyo.lg.jp/'>
-                    こたエール
-                </a>
-                へ
-            </Typography>
-        </Box>
+        </Grid>
+        <Grid item xs={4} textAlign='center'>
+            <Pie data={graphData} /> 
+        </Grid>
+        <Grid item xs={4} textAlign='center'>
+            <Pie data={graphData2} /> 
+        </Grid>
+        <Grid item xs={4} textAlign='center'>
+            <Pie data={graphData3} /> 
+        </Grid>
+        <Typography variant="h5" gutterBottom mt={3}>
+            スマホの悩みについてご相談したい方は
+            <a href='https://www.tokyohelpdesk.metro.tokyo.lg.jp/'>
+                こたエール
+            </a>
+            へ
+        </Typography>
       </Grid>
     )
 }
