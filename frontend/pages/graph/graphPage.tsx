@@ -3,6 +3,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from "react-chartjs-2";
+import { Box, Grid, Typography } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -76,14 +77,28 @@ const GraphPage: NextPage<GraphDataType> = ( props: GraphDataType ) => {
         responsive: false
       };
     return (
-      <div>
-          <Head>
-              <title>Graph Page</title>
-              <meta name="description" content="検索エンジン用の説明文" />
-          </Head>
-          <h1>Graph Page</h1>
-          <Pie  data={graphData} />;
-      </div>
+      <Grid container alignItems='center' justifyContent='center' direction="column">
+        <Box
+            sx={{
+            width: 600,
+            height: 600,
+            }}
+        >
+            <div>
+            <Typography variant="h3" mt={5} ml={7} mb={3}>
+                質問のアンケート結果 
+            </Typography>
+            <Pie  data={graphData} />;
+            </div>
+            <Typography variant="h5" gutterBottom mb={3}>
+                スマホの悩みについてご相談したい方は
+                <a href='https://www.tokyohelpdesk.metro.tokyo.lg.jp/'>
+                    こたエール
+                </a>
+                へ
+            </Typography>
+        </Box>
+      </Grid>
     )
 }
 

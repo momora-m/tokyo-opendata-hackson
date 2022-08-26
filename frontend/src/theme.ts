@@ -1,7 +1,11 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
-    // TODO:テーマ設定を行います
+    palette: {
+        secondary: {
+          main: '#F4511E',
+        },
+      },  
 });
 
 export default theme;

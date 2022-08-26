@@ -11,6 +11,15 @@ a {
   text-decoration: none;
 }
 
+a {
+  color: skyblue;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
+
 * {
   box-sizing: border-box;
 }
