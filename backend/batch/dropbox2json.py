@@ -4,7 +4,7 @@ import csv
 import shutil
 import os
 
-dropbox_access_token="sl.BOGlS3NPm_KGoe89FGnMhBZsnofy9aLmXwiSsRuEBVMpkku5iVS8xfE_b2NoX1htJjyataEKh4fC9AB4DxpYuCVQA-Ahn92VuZq1H-cOQCn4P4hkRcuf3Hoh6aDzBbNnG6YxU6QT9FE"
+dropbox_access_token=""
 client = dropbox.Dropbox(dropbox_access_token)
 
 #ここがQ5
