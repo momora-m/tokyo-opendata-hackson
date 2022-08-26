@@ -3,15 +3,54 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from "react-chartjs-2";
+import { Box, Grid, Typography } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 type GraphDataType = {
-    q1: number;
-    q2: number;
-    q3: number;
-    q4: number;
-    q5: number;
+    q5:{
+        middle1: number;
+        junour56: number;
+        middle3: number;
+        junour34: number;
+        high1: number;
+        high2: number;
+        middle2: number;
+        high3: number;
+        junour12: number;
+    },
+    q7:{
+        a: number;
+        b: number;
+        c: number;
+        d: number;
+        e: number;
+        f: number;
+        g: number;
+        h: number;
+        i: number;
+        j: number;
+        k: number;
+        l: number;
+        m: number;
+        n: number;
+    },
+    q14:{
+        aa: number;
+        bb: number;
+        cc: number;
+        dd: number;
+        ee: number;
+        ff: number;
+        gg: number;
+        hh: number;
+        ii: number;
+        jj: number;
+        kk: number;
+        ll: number;
+        mm: number;
+    }
+
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -21,65 +60,131 @@ export const getServerSideProps: GetServerSideProps = async () => {
             .then(data => data.json())
         
         const GraphData: GraphDataType = {
-            q1: products.q1,
-            q2: products.q2,
-            q3: products.q3,
-            q4: products.q4,
-            q5: products.q5,
+            q5:{
+            middle1: products.q5.middle1,
+            junour56: products.q5.junour56,
+            middle3: products.q5.middle3,
+            junour34: products.q5.junour34,
+            high1: products.q5.high1,
+            high2: products.q5.high2,
+            middle2: products.q5.middle2,
+            high3: products.q5.high3,
+            junour12: products.q5.junour12
+            },
+            q7:{
+                a: products.q7.a,
+                b: products.q7.b,
+                c: products.q7.c,
+                d: products.q7.d,
+                e: products.q7.e,
+                f: products.q7.f,
+                g: products.q7.g,
+                h: products.q7.h,
+                i: products.q7.i,
+                j: products.q7.j,
+                k: products.q7.k,
+                l: products.q7.l,
+                m: products.q7.m,
+                n: products.q7.n
+            },
+            q14:{
+                aa: products.q14.aa,
+                bb: products.q14.bb,
+                cc: products.q14.cc,
+                dd: products.q14.dd,
+                ee: products.q14.ee,
+                ff: products.q14.ff,
+                gg: products.q14.gg,
+                hh: products.q14.hh,
+                ii: products.q14.ii,
+                jj: products.q14.jj,
+                kk: products.q14.kk,
+                ll: products.q14.ll,
+                mm: products.q14.mm
+            }
         } 
         return {
             props:  GraphData
         }
     } catch (e) {
-        console.log(e)
-        const GraphData: GraphDataType = {
-            q1: 0,
-            q2: 0,
-            q3: 0,
-            q4: 0,
-            q5: 0,
-        } 
+        console.log(e);
         return {
-            props: GraphData
+            props: []
         }
     }
   }
 
 const GraphPage: NextPage<GraphDataType> = ( props: GraphDataType ) => {
-    const keys = Object.keys(props);
+    const keys = Object.keys(props.q5);
     const graphData = {
         labels: keys,
         datasets: [
             {
                 label: "調査結果",
-                data: [props.q1, props.q2, props.q3, props.q4, props.q5],
+                data: [
+                    props.q5.middle1, 
+                    props.q5.junour56, 
+                    props.q5.middle3, 
+                    props.q5.junour34, 
+                    props.q5.high1,
+                    props.q5.high2, 
+                    props.q5.middle2, 
+                    props.q5.high3,
+                    props.q5.junour12,
+                ],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
                     'rgb(255, 205, 86)',
                     'rgb(20, 222, 225)',
-                    'rgb(25, 215, 42)',                
+                    'rgb(25, 215, 42)',
+                    'rgb(54, 30, 235)',
+                    'rgb(55, 25, 86)',
+                    'rgb(20, 122, 125)',
+                    'rgb(135, 115, 192)',                
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(20, 222, 225)',
+                    'rgb(25, 215, 42)',
+                    'rgb(54, 30, 235)',
+                    'rgb(55, 25, 86)',
+                    'rgb(20, 122, 125)',
+                    'rgb(135, 115, 192)',  
                   ],
                 borderWidth: 1,
             }
         ]
     }
+    const options = {
+        maintainAspectRatio: false,
+        responsive: false
+      };
     return (
-      <div>
-          <Head>
-              <title>Graph Page</title>
-              <meta name="description" content="検索エンジン用の説明文" />
-          </Head>
-          <h1>Graph Page</h1>
-          <Pie data={graphData} />;
-      </div>
+      <Grid container alignItems='center' justifyContent='center' direction="column">
+        <Box
+            sx={{
+            width: 600,
+            height: 600,
+            }}
+        >
+            <div>
+            <Typography variant="h3" mt={5} ml={7} mb={3}>
+                質問のアンケート結果 
+            </Typography>
+            <Pie  data={graphData} />;
+            </div>
+            <Typography variant="h5" gutterBottom mb={3}>
+                スマホの悩みについてご相談したい方は
+                <a href='https://www.tokyohelpdesk.metro.tokyo.lg.jp/'>
+                    こたエール
+                </a>
+                へ
+            </Typography>
+        </Box>
+      </Grid>
     )
 }
 
