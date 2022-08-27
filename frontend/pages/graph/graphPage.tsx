@@ -6,6 +6,7 @@ import { Pie } from "react-chartjs-2";
 import { Box, Grid, Typography } from '@mui/material';
 import { InsertEmoticon } from '@mui/icons-material';
 import getQuestionList from '../../src/getQuestionList';
+import { useRouter } from 'next/router';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -119,6 +120,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 
 const GraphPage: NextPage<GraphDataType> = ( props: GraphDataType ) => {
+    const router = useRouter();
     const keys = Object.keys(props.q5);
     const keysJa = getQuestionList(keys);
     const graphData = {
