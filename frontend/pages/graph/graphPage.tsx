@@ -19,6 +19,7 @@ type GraphDataType = {
         middle2: number;
         high3: number;
         junour12: number;
+        preschooler: number;
     },
     q7:{
         a: number;
@@ -70,7 +71,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
             high2: products.q5.high2,
             middle2: products.q5.middle2,
             high3: products.q5.high3,
-            junour12: products.q5.junour12
+            junour12: products.q5.junour12,
+            preschooler: products.q5.preschooler
             },
             q7:{
                 a: products.q7.a,
