@@ -10,6 +10,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import { useRouter } from 'next/router';
 import { css } from "@emotion/react";
 import { useState } from "react";
 
@@ -56,6 +57,7 @@ const styles = {
 };
 
 export default function Questionnaire() {
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const [value1, setValue1] = useState("子供にせがまれた");
   const [value2, setValue2] = useState("未就学児");
@@ -95,6 +97,18 @@ export default function Questionnaire() {
       "ネット上で知り合った人と会う等",
     ],
   };
+
+  const clickButton = () => {
+
+    router.push({
+        pathname:"/graph/graphPage",   //URL
+        query: {step : step,
+                value1: value1,
+                value2: value2,
+                value3: value3,
+              } 
+      });
+  }
 
   return (
     <div css={styles.content}>
@@ -182,7 +196,7 @@ export default function Questionnaire() {
             </div>
           </FormControl>
         </div>
-        <Button variant="contained" size="large">
+        <Button onClick={clickButton} variant="contained" size="large">
           結果を見る
         </Button>
       </div>
