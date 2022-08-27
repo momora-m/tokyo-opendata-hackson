@@ -2,8 +2,8 @@ use actix_web::{get,HttpResponse, HttpServer,App};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::{fs::File, io::BufReader};
-
 use std::process::{Command};
+
 const SERVER:&str = "0.0.0.0:8080";
 const JSON_NAME:&str = "output.json";
 const PYTHON_PATH:&str = "batch/qcsv2json.py";
