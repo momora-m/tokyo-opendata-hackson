@@ -24,10 +24,10 @@ jobs:
           node-version: 16.x
 
       - name: Install NPM packages
-        run: cd /frontend && npm i
+        run: cd frontend && npm i
 
       - name: Build Next.js app
-        run: cd /frontend && npm run build && npm run export
+        run: cd frontend && npm run build && npm run export
         
       - name: Build And Deploy
         id: builddeploy
